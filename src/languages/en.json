@@ -1,0 +1,279 @@
+{
+    "login" : {
+        "title": "Sign in",
+        "fields": {
+            "email": {
+                "label": "Email",
+                "name": "email",
+                "error": "Must be a valid email",
+                "required": "Email is required"
+            },
+            "password": {
+                "label": "Password",
+                "name": "password",
+                "required": "Password is required"
+            }
+        },
+        "submitButton": "Sign In Now",
+        "haveAccount": "Don't have an account?",
+        "link": "Sign Up"
+    },
+    "register": {
+        "title": "Sign up",
+        "fields": {
+            "email": {
+                "label": "Email",
+                "name": "email",
+                "error": "Must be a valid email",
+                "required": "Email is required"
+            },
+            "password": {
+                "label": "Password",
+                "name": "password",
+                "required": "Password is required"
+            },
+            "inn": {
+                "label": "INN",
+                "name": "inn",
+                "required": "Inn is required"
+            },
+            "name": {
+                "label": "Name",
+                "name": "name",
+                "required": "Name is required"
+            },
+            "address": {
+                "label": "Address",
+                "name": "address",
+                "required": "Address is required"
+            }, 
+            "mail_address": {
+                "label": "Mail address",
+                "name": "mail_address",
+                "required": "Mail address is required"
+            },
+            "cpp": {
+                "label": "CPP",
+                "name": "cpp",
+                "required": "CPP is required"
+            }, 
+            "bank": {
+                "label": "Bank",
+                "name": "bank",
+                "required": "Bank is required"
+            },
+            "settlement_account": {
+                "label": "Settlement account",
+                "name": "settlement_account",
+                "required": "Settlement account is required"
+            }, 
+            "correspondent_account": {
+                "label": "Correspondent account",
+                "name": "correspondent_account",
+                "required": "Correspondent account is required"
+            }, 
+            "bic": {
+                "label": "Bic",
+                "name": "bic",
+                "required": "Bic is required"
+            }
+        },
+        "submitButton": "Sign Up Now",
+        "haveAccount": "Have an account?",
+        "loginLink": "Sign In"
+    },
+    "profile" : {
+        "title": "Profile",
+        "subTitle": "The information can be edited",
+        "fields": {
+            "inn": {
+                "label": "INN",
+                "name": "inn"
+            },
+            "name": {
+                "label": "Name",
+                "name": "name"
+            },
+            "address": {
+                "label": "Address",
+                "name": "address"
+            }, 
+            "mail_address": {
+                "label": "Mail address",
+                "name": "mail_address"
+            },
+            "cpp": {
+                "label": "CPP",
+                "name": "cpp"
+            }, 
+            "bank": {
+                "label": "Bank",
+                "name": "bank"
+            },
+            "settlement_account": {
+                "label": "Settlement account",
+                "name": "settlement_account"
+            }, 
+            "correspondent_account": {
+                "label": "Correspondent account",
+                "name": "correspondent_account"
+            }, 
+            "bic": {
+                "label": "Bic",
+                "name": "bic"
+            }
+        },
+        "saveButton": "Save details"
+    },
+    "sidebar": {
+        "items": {
+            "profile": "Profile",
+            "documents": "Documents",
+            "annex": "Attachments"
+        }
+    },
+    "documents": {
+        "title": "Contracts",
+        "columns": {
+            "number": "Number",
+            "inn": "INN",
+            "name": "Name",
+            "date": "Date",
+            "status": "Status"
+        },
+        "sort": "Sort",
+        "createButton": "Create contract"
+    },
+    "document": {
+        "details_titles": {
+            "main_details": "Main Details",
+            "seller": "Seller",
+            "buyer": "Buyer"
+        },
+        "details": {
+            "seller": {
+                "inn": "INN",
+                "name": "Name",
+                "address": "Address",
+                "mail_address": "Mail address",
+                "cpp": "CPP", 
+                "bank": "Bank",
+                "settlement_account": "Settlement account", 
+                "correspondent_account": "Correspondent account", 
+                "bic": "BIC"
+            },
+            "buyer": {
+                "inn": "INN",
+                "name": "Name",
+                "address": "Address",
+                "mail_address": "Mail address",
+                "cpp": "CPP", 
+                "bank": "Bank",
+                "settlement_account": "Settlement account", 
+                "correspondent_account": "Correspondent account", 
+                "bic": "BIC"
+            },
+            "main_details": {
+                "status": "Status",
+                "date": "Date"
+            }
+        },
+        "attachments": {
+            "title": "Attachments",
+            "columns": {
+                "number": "Number",
+                "date": "Date",
+                "status": "Status"
+            },
+            "sort": "Sort"
+        },
+        "signButton": "Sign",
+        "finishButton": "Finish",
+        "createButton": "Create Attachment"
+    },
+    "attachment": {
+        "details_titles": {
+            "main_details": "Main Details",
+            "seller": "Seller",
+            "buyer": "Buyer"
+        },
+        "details": {
+            "seller": {
+                "inn": "INN",
+                "name": "Name",
+                "address": "Address",
+                "mail_address": "Mail address",
+                "cpp": "CPP", 
+                "bank": "Bank",
+                "settlement_account": "Settlement account", 
+                "correspondent_account": "Correspondent account", 
+                "bic": "BIC"
+            },
+            "buyer": {
+                "inn": "INN",
+                "name": "Name",
+                "address": "Address",
+                "mail_address": "Mail address",
+                "cpp": "CPP", 
+                "bank": "Bank",
+                "settlement_account": "Settlement account", 
+                "correspondent_account": "Correspondent account", 
+                "bic": "BIC"
+            },
+            "main_details": {
+                "contract_number": "Contract number",
+                "status": "Status",
+                "date": "Date"
+            }
+        },
+        "signButton": "Sign",
+        "products": {
+            "title": "Products",
+            "columns": {
+                "number": "№",
+                "name": "Name",
+                "amount": "Amount",
+                "price": "Price",
+                "total1": "Price without VAT",
+                "vat": "VAT",
+                "total2": "Price with VAT"
+            }
+        }
+    },
+    "create_document": {
+        "title": "Create document",
+        "fields": {
+            "buyer": {
+                "label": "Buyer",
+                "description": "Find a company by INN"
+            }
+        },
+        "signButton": "Create and sign document"
+    },
+    "create_attachment": {
+        "title": "Create attachment",
+        "products": {
+            "title": "Products",
+            "columns": {
+                "name": "Name",
+                "amount": "Amount",
+                "price": "Price"
+            }
+        },
+        "signButton": "Create and sign attachment"
+    },
+    "statuses": {
+        "pending_application_creation": "Pending application creation", 
+        "waiting_for_attachment_signature": "Waiting for attachment signature",
+        "waiting_for_signature_2_of_2": "Waiting for signature 2 of 2",
+        "waiting_for_signature_1_of_2": "Waiting for signature 1 of 2",
+        "signed": "Signed",
+        "completed": "Completed"
+    },
+    "tables": {
+        "rows_per_page": "Rows per page"
+    },
+    "buttons": {
+        "back": "Back"
+    }
+}

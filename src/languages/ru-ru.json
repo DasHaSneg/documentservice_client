@@ -1,0 +1,279 @@
+{
+    "login" : {
+        "title": "Вход",
+        "fields": {
+            "email": {
+                "label": "Почта",
+                "name": "email",
+                "error": "Must be a valid email",
+                "required": "Обязательно к заполнению"
+            },
+            "password": {
+                "label": "Пароль",
+                "name": "password",
+                "required": "Обязательно к заполнению"
+            }
+        },
+        "submitButton": "Войти",
+        "haveAccount": "Нет аккаунта?",
+        "link": "Зарегистрируйтесь"
+    },
+    "register": {
+        "title": "Регистрация",
+        "fields": {
+            "email": {
+                "label": "Почта",
+                "name": "email",
+                "error": "Must be a valid email",
+                "required": "Обязательно к заполнению"
+            },
+            "password": {
+                "label": "Пароль",
+                "name": "password",
+                "required": "Обязательно к заполнению"
+            },
+            "inn": {
+                "label": "Инн",
+                "name": "inn",
+                "required": "Обязательно к заполнению"
+            },
+            "name": {
+                "label": "Название",
+                "name": "name",
+                "required": "Обязательно к заполнению"
+            },
+            "address": {
+                "label": "Юр. адрес",
+                "name": "address",
+                "required": "Обязательно к заполнению"
+            }, 
+            "mail_address": {
+                "label": "Почтовый адрес",
+                "name": "mail_address",
+                "required": "Обязательно к заполнению"
+            },
+            "cpp": {
+                "label": "КПП",
+                "name": "cpp",
+                "required": "Обязательно к заполнению"
+            }, 
+            "bank": {
+                "label": "Банк",
+                "name": "bank",
+                "required": "Обязательно к заполнению"
+            },
+            "settlement_account": {
+                "label": "Рас./счет",
+                "name": "settlement_account",
+                "required": "Обязательно к заполнению"
+            }, 
+            "correspondent_account": {
+                "label": "Корр./счет",
+                "name": "correspondent_account",
+                "required": "Обязательно к заполнению"
+            }, 
+            "bic": {
+                "label": "Бик",
+                "name": "bic",
+                "required": "Обязательно к заполнению"
+            }
+        },
+        "submitButton": "Зарегистрироваться",
+        "haveAccount": "Уже есть аккаунт?",
+        "loginLink": "Вход"
+    },
+    "profile" : {
+        "title": "Профиль",
+        "subTitle": "Данные можно изменить",
+        "fields": {
+            "inn": {
+                "label": "Инн",
+                "name": "inn"
+            },
+            "name": {
+                "label": "Название",
+                "name": "name"
+            },
+            "address": {
+                "label": "Юр. адрес",
+                "name": "address"
+            }, 
+            "mail_address": {
+                "label": "Почтовый адрес",
+                "name": "mail_address"
+            },
+            "cpp": {
+                "label": "КПП",
+                "name": "cpp"
+            }, 
+            "bank": {
+                "label": "Банк",
+                "name": "bank"
+            },
+            "settlement_account": {
+                "label": "Рас./счет",
+                "name": "settlement_account"
+            }, 
+            "correspondent_account": {
+                "label": "Корр./счет",
+                "name": "correspondent_account"
+            }, 
+            "bic": {
+                "label": "Бик",
+                "name": "bic"
+            }
+        },
+        "saveButton": "Сохранить изменения"
+    },
+    "sidebar": {
+        "items": {
+            "profile": "Профиль",
+            "documents": "Договоры",
+            "annex": "Приложения"
+        }
+    },
+    "documents": {
+        "title": "Договоры",
+        "columns": {
+            "number": "Номер",
+            "inn": "ИНН",
+            "name": "Название",
+            "date": "Дата создания",
+            "status": "Статус"
+        },
+        "sort": "Сортировать",
+        "createButton": "Создать договор"
+    },
+    "document": {
+        "details_titles": {
+            "main_details": "Основное",
+            "seller": "Продавец",
+            "buyer": "Покупатель"
+        },
+        "details": {
+            "seller": {
+                "inn": "ИНН",
+                "name": "Название",
+                "address": "Юр. адрес",
+                "mail_address": "Почтовый адрес",
+                "cpp": "КПП", 
+                "bank": "Банк",
+                "settlement_account": "Рас./счет", 
+                "correspondent_account": "Корр./счет", 
+                "bic": "Бик"
+            },
+            "buyer": {
+                "inn": "ИНН",
+                "name": "Название",
+                "address": "Юр. адрес",
+                "mail_address": "Почтовый адрес",
+                "cpp": "КПП", 
+                "bank": "Банк",
+                "settlement_account": "Рас./счет", 
+                "correspondent_account": "Корр./счет", 
+                "bic": "Бик"
+            },
+            "main_details": {
+                "status": "Статус",
+                "date": "Дата создания"
+            }
+        },
+        "attachments": {
+            "title": "Приложения",
+            "columns": {
+                "number": "Номер",
+                "date": "Дата создания",
+                "status": "Статус"
+            },
+            "sort": "Сортировать"
+        },
+        "signButton": "Подписать",
+        "finishButton": "Завершить",
+        "createButton": "Создать приложение"
+    },
+    "attachment": {
+        "details_titles": {
+            "main_details": "Основное",
+            "seller": "Продавец",
+            "buyer": "Покупатель"
+        },
+        "details": {
+            "seller": {
+                "inn": "ИНН",
+                "name": "Название",
+                "address": "Юр. адрес",
+                "mail_address": "Почтовый адрес",
+                "cpp": "КПП", 
+                "bank": "Банк",
+                "settlement_account": "Рас./счет", 
+                "correspondent_account": "Корр./счет", 
+                "bic": "Бик"
+            },
+            "buyer": {
+                "inn": "ИНН",
+                "name": "Название",
+                "address": "Юр. адрес",
+                "mail_address": "Почтовый адрес",
+                "cpp": "КПП", 
+                "bank": "Банк",
+                "settlement_account": "Рас./счет", 
+                "correspondent_account": "Корр./счет", 
+                "bic": "Бик"
+            },
+            "main_details": {
+                "contract_number": "Номер договора",
+                "status": "Статус",
+                "date": "Дата создания"    
+            }
+        },
+        "signButton": "Подписать",
+        "products": {
+            "title": "Товары",
+            "columns": {
+                "number": "№",
+                "name": "Наименование",
+                "amount": "Кол-во, шт.",
+                "price": "Цена (без НДС), руб.",
+                "total1": "Сумма (без НДС), руб.",
+                "vat": "НДС, руб.",
+                "total2": "Сумма (с НДС) руб."
+            }
+        }
+    },
+    "create_document": {
+        "title": "Создать договор",
+        "fields": {
+            "buyer": {
+                "label": "Покупатель",
+                "description": "Найти компанию по ИНН"
+            }
+        },
+        "signButton": "Создать и подписать договор"
+    },
+    "create_attachment": {
+        "title": "Создать приложение",
+        "products": {
+            "title": "Товары",
+            "columns": {
+                "name": "Наименование",
+                "amount": "Кол-во, шт.",
+                "price": "Цена (без НДС), руб."
+            }
+        },
+        "signButton": "Создать и подписать приложение"
+    },
+    "statuses": {
+        "pending_application_creation": "Ожидает создание приложения", 
+        "waiting_for_attachment_signature": "Ожидает подписи приложения",
+        "waiting_for_signature_2_of_2": "Ждет подписи 2 из 2",
+        "waiting_for_signature_1_of_2": "Ждет подписи 1 из 2",
+        "signed": "Подписан",
+        "completed": "Завершен"
+    },
+    "tables": {
+        "rows_per_page": "Строки на странице"
+    },
+    "buttons": {
+        "back": "Назад"
+    }
+}
