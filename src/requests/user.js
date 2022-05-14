@@ -1,5 +1,5 @@
 import { axiosGet } from "../helpers/api";
 
-export const getProfileById = id => axiosGet(`profile/${id}`);
+export const getProfileById = async id => await axiosGet(`profile/${id}`);
 
-export const getProfileByINN = inn => axiosGet(`profile/inn/${inn}`);
+export const getProfileByINN = async inn => await axiosGet(`profile/inn/${inn}`);
