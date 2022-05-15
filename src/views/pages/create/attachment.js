@@ -1,15 +1,11 @@
 import { Box, Container, Typography, Grid } from "@mui/material"
 import { strings } from "../../../i18n";
-import { BackButton, SignButton } from "../../components/buttons";
-import { EditableProductsTable } from "../../components/create/attachment";
+import { BackButton} from "../../components/buttons";
+import { CreateAttachmentForm } from "../../components/create/attachment";
 import { DashboardLayout } from "../../layouts/dashboard";
 
 export const CreateAttachment = () => {
     const strPrefix = "create_attachment";
-
-    const handleSign = () => {
-
-    }
 
     return(
         <DashboardLayout>
@@ -38,7 +34,7 @@ export const CreateAttachment = () => {
                             md={12}
                             xs={12}
                         >
-                            <EditableProductsTable strPrefix={strPrefix}/>
+                            <CreateAttachmentForm strPrefix={strPrefix} />
                         </Grid>
                         <Grid
                             item
@@ -47,15 +43,6 @@ export const CreateAttachment = () => {
                             xs={6}
                         >
                            
-                        </Grid>
-                        
-                        <Grid
-                            item
-                            lg={6}
-                            md={6}
-                            xs={6}
-                        >
-                            <SignButton strPrefix={strPrefix} handleSign={handleSign}/>
                         </Grid>
                     </Grid>
                 </Container>

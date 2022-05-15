@@ -260,7 +260,8 @@
                 "price": "Price"
             }
         },
-        "signButton": "Create and sign attachment"
+        "signButton": "Create and sign attachment",
+        "upload": "Upload"
     },
     "statuses": {
         "pending_application_creation": "Pending application creation", 

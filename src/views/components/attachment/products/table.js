@@ -9,28 +9,28 @@ const products = [
       "price": 50,
   },
   {
-      "number": 1,
+      "number": 2,
       "name": "карандаш",
       "amount": 100,
       "price": 30,
   },
   {
-      "number": 1,
+      "number": 3,
       "name": "линейка",
       "amount": 100,
       "price": 20,
   }
 ]
 
-const spec = {
-  "VAT": 0.2,
-  products,
-}
-
 export const ProductsTable = (props) => {
-  const {strPrefix} = props;
+  const {strPrefix, prod} = props;
 
   const prefix = `${strPrefix}.products`
+
+  const spec = {
+    "VAT": 0.2,
+    products: prod || products,
+  };
 
   const columns = {
     number: strings(`${prefix}.columns.number`),
