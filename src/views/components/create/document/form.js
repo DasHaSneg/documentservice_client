@@ -1,13 +1,11 @@
-import { Card, CardContent, Grid, Box, TextField, Button, Autocomplete, CircularProgress, Typography } from "@mui/material"
-import { useFormik } from "formik";
+import { Card, CardContent, Grid, Box, TextField, Button, Autocomplete, CircularProgress, Typography } from "@mui/material";
 import { strings } from "../../../../i18n";
-import * as Yup from 'yup';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
-import InputMask from 'react-input-mask';
 import { useSelector } from "react-redux";
-import { getProfileByINN } from "../../../../requests";
+import { addContract, getProfileById, getProfileByINN } from "../../../../requests";
 import { useApi } from "../../../../hooks/useApi";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 
 const companies = [
@@ -35,30 +33,40 @@ const companies = [
     }
 ]
 
-function sleep(delay = 0) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, delay);
-    });
-}
-
 export const CreateDocumentForm = (props) => {
-    const {strPrefix, handleSubmit} = props;
+    const {strPrefix} = props;
     const {user} = useSelector(state => state.user);
 
     const [value, setValue] = useState(null);
     const [inputValue, setInputValue] = useState('');
     const [options, setOptions] = useState([]);
-    // const loaded = useRef(false);
+  
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const profile = useApi(async (inn) => {
+    const [signButton, setSignButton] = useState({
+        loading: false,
+        error: false
+    });
+
+    const setSb = (field, val) => setSignButton({...signButton, [field]: val});
+
+    const profileByInn = useApi(async (inn) => {
         const profile = await getProfileByINN(inn)
         if (profile) {
-            setOptions(profile) 
+            setOptions(profile);
         }
             
     });
+
+    const profile = useApi(async (id) => {
+        const profile = await getProfileById(id);
+        if (profile) {
+            return profile;
+        }
+    });
+
+    
     // const fetch = React.useMemo(
     //     () =>
     //       throttle((request, callback) => {
@@ -72,8 +80,11 @@ export const CreateDocumentForm = (props) => {
         if (inputValue.length < 12) {
             return;
         }
+        if (inputValue.length > 13) {
+            return;
+        }
         if (inputValue === user.inn) {
-            setError('your inn')
+            setError('ypur inn');
             return;
         }
 
@@ -83,7 +94,7 @@ export const CreateDocumentForm = (props) => {
         setLoading(true);
 
         (async () => {
-            await profile.fetch(inputValue)
+            await profileByInn.fetch(inputValue)
       
             if (active) {
                 setLoading(false);
@@ -94,8 +105,39 @@ export const CreateDocumentForm = (props) => {
             
             active = false;
         };
+        
 
     }, [inputValue]);
+
+    const sign = useApi(async (userProfile) => {
+        console.log({
+            sellerProfile: userProfile,
+            buyerProfile: value 
+        })
+
+        const result = await addContract({
+            sellerProfile: userProfile,
+            buyerProfile: value 
+        });
+
+        if (result) {
+            console.log(result);
+        }
+            
+    });
+
+    const handleSignClick = async () => {
+       
+        if (!value) {
+            return;
+        }
+        setSb('loading', true);
+     
+        let [userProfile] = await profile.fetch(JSON.parse(localStorage.getItem('user')).profile_id)
+        await sign.fetch(userProfile);
+
+        setSb('loading', false);
+    }
 
     return(
         <Card>
@@ -122,7 +164,7 @@ export const CreateDocumentForm = (props) => {
                                     setValue(newValue);
                                 }}
                                 onInputChange={(event, newInputValue) => {
-                                    setInputValue(newInputValue);
+                                    setInputValue(newInputValue)
                                 }}
                                 loading={loading}
                                 renderInput={(params) => (
@@ -154,6 +196,20 @@ export const CreateDocumentForm = (props) => {
                                     );
                                 }}
                                 />
+                                <Box sx={{ py: 2}}>
+                                    <LoadingButton
+                                        color="primary"
+                                        //disabled={signButton.loading}
+                                        fullWidth
+                                        size="large"
+                                        type="submit"
+                                        variant="contained"
+                                        loading={signButton.loading}
+                                        onClick={handleSignClick}
+                                    >
+                                        {strings(`${strPrefix}.signButton`)}
+                                    </LoadingButton>
+                                </Box>
                         </Grid>
                     </Grid>
                 </Grid>
