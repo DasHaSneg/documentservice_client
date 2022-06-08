@@ -12,6 +12,7 @@ import { ThemeProvider } from '@emotion/react';
 import { theme } from '../them';
 import { CssBaseline } from '@mui/material';
 import { Login, Profile, Register, Documents, Document, Attachment, CreateDocument, CreateAttachment} from './pages';
+import { SimpleAlert } from './components/alert';
 
 
 export const Main = (props) => {
@@ -20,6 +21,7 @@ export const Main = (props) => {
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <CssBaseline/>
+      <SimpleAlert />
       <BrowserRouter>
         <Routes>
           <Route exact path='/create/attachment' element={<PrivateRoute/>}>

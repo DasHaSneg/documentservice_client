@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import { useDispatch } from "react-redux";
 import { useApi } from "../../hooks/useApi";
 import { registerUser } from "../../requests";
+import LoadingButton from '@mui/lab/LoadingButton';
+import { errAlert, successAlert } from "../../redux/reducers/alert";
 
 const fieldType = {
     email: 'email',
@@ -30,25 +32,29 @@ export const Register = () => {
     const submitRegister = useApi(
         (...rest) => {
             registerUser(...rest).then(() => {
-                console.log('success');
+                dispatch(successAlert('success'));
+                navigate("/documents");
             })
-            .catch(e => console.log(e.response?.data?.error))
+            .catch(e => {
+                dispatch(errAlert(e.response?.data?.error));
+            })
+                
         }
     )
  
     const formik = useFormik({
         initialValues: {
-            email: 'test1@mail.ru',
+            email: 'company1@mail.ru',
             password: '1234',
-            inn: "121221321234",
-            name: "Seller1",
-            address: "sdsfsfsfdsfdsfgsdf",
-            mail_address: "sfdsdffsdf",
-            cpp: "12321324", 
-            bank: "Sberbank",
-            settlement_account: "sefsfs", 
-            correspondent_account: "sdfsfs", 
-            bic: "sdfsfsf"
+            inn: "417405238280",
+            name: "Компания 1",
+            address: "014202, Курганская область, город Сергиев Посад, пл. Балканская, 36",
+            mail_address: "014202, Курганская область, город Сергиев Посад, пл. Балканская, 36",
+            cpp: "199743738", 
+            bank: "Сбербанк",
+            settlement_account: "50304330500000005598", 
+            correspondent_account: "50804552700000001015", 
+            bic: "307017935",
         },
         validationSchema: Yup.object({
             email: Yup
@@ -152,16 +158,16 @@ export const Register = () => {
                         />
                     })}
                     <Box sx={{ py: 2 }}>
-                        <Button
+                        <LoadingButton
                             color="primary"
-                            disabled={formik.isSubmitting}
                             fullWidth
                             size="large"
                             type="submit"
                             variant="contained"
+                            loading={formik.isSubmitting}
                         >
                             {strings(`${strPrefix}.submitButton`)}
-                        </Button>
+                        </LoadingButton>
                     </Box>
                     <Typography
                         color="textSecondary"
