@@ -7,7 +7,7 @@ import { ProductsTable } from "../../attachment";
 import Papa from "papaparse";
 import { addAnnex } from "../../../../requests";
 import { useNavigate, useParams } from "react-router-dom";
-import { setContracts, setCurrAttachments } from "../../../../redux/reducers/contract";
+import { getUserContract, getUserContracts, setContracts, setCurrAttachments } from "../../../../redux/reducers/contract";
 import { useDispatch, useSelector } from "react-redux";
 import { errAlert } from "../../../../redux/reducers/alert";
 import { useApi } from "../../../../hooks/useApi";
@@ -47,8 +47,20 @@ export const CreateAttachmentForm = (props) => {
     const { contracts } = useSelector(st => st.contracts);
 
     useEffect(() => {
-        let contract = {...contracts.filter(contract => contract.id.toString() === docId)[0]};
-        setContract(contract);
+        if (contracts) {
+            let contract = {...contracts.filter(contract => contract.id.toString() === docId)[0]};
+            setContract(contract);
+        } else {
+            dispatch(getUserContracts()).then((res) => {   
+                if (res.error) {
+                        dispatch(errAlert(res.payload));
+                } else {
+                    let contract = {...contracts.filter(contract => contract.id.toString() === docId)[0]};
+                    setContract(contract);
+                }
+            })
+        }
+        
     }, [contracts]);
 
     const [signButton, setSignButton] = useState({

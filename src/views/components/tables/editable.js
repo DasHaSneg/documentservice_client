@@ -22,7 +22,6 @@ function EditToolbar(props) {
   
     const handleClick = () => {
       const id = randomId();
-      console.log(apiRef)
       apiRef.current.updateRows([{ id, isNew: true }]);
       apiRef.current.startRowEditMode({ id });
   

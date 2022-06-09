@@ -33,21 +33,37 @@ export const Document = (props) => {
     }
 
     useEffect(() => {
-        let contract = {...contracts.filter(contract => contract.id.toString() === docId)[0]};
-        delete contract.id;
-        setContract(contract);
+        if (contract) {
+            let contract = {...contracts.filter(contract => contract.id.toString() === docId)[0]};
+            delete contract.id;
+            setContract(contract);
+        } else {
+            dispatch(getUserContracts()).then((res) => {   
+                if (res.error) {
+                        dispatch(errAlert(res.payload));
+                } else {
+                    let contracts = res.payload;
+                    let contract = {...contracts.filter(contract => contract.id.toString() === docId)[0]};
+                    delete contract.id;
+                    setContract(contract);
+                }
+            })
+        }
+        
         if (attach.length > 0 && attach[0].contract_id === docId) 
             return;
         dispatch(getUserAttachments({contract_id: docId, role: attach.role})).then((res) => {
             if (res.error) {
                     dispatch(errAlert(res.payload));
             } else {
-                let attach = res.payload[0];
-                setAttach([{
-                    number: attach.id,
-                    date: attach.main_details.date,
-                    status: attach.main_details.status,
-                }]);
+                if (res.payload.length > 0) {
+                    let attach = res.payload[0];
+                    setAttach([{
+                        number: attach.id,
+                        date: attach.main_details.date,
+                        status: attach.main_details.status,
+                    }]);
+                }
             }
         })
     }, [])

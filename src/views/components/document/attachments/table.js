@@ -21,7 +21,6 @@ import { SimpleTable } from "../../tables";
 export const AttachmentsTable = (props) => {
   const {strPrefix, attachments, handleItemClick} = props;
   const navigate = useNavigate();
-  console.log(attachments)
 
   const prefix = `${strPrefix}.attachments`
 

@@ -6,7 +6,6 @@ import { getAnnexes, getBlockchainAnnexes, getBlockchainContracts, getContract, 
 export const getUserContract = createAsyncThunk('contracts/new', async (id, {rejectWithValue}) => {
     try {
         let result = await getContract(id);
-        console.log(result);
         //change status
         return result;
     } catch (e) {
@@ -80,7 +79,7 @@ export const contractSlice = createSlice({
     name: 'contracts',
     initialState: {
         error: null,
-        contracts: [],
+        contracts: null,
         curAttachments: [],
     },
     reducers: {

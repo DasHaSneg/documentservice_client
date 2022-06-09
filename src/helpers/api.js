@@ -41,6 +41,7 @@ export const axiosGetBl = (url, ...params) => {
 
 
 export const axiosGet = (url, ...params) => {
+	console.log(instance.headers);
     return instance.get(url, ...params).then(res  => res.data)
 };
 

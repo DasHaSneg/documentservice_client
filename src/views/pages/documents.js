@@ -22,7 +22,7 @@ export const Documents = () => {
     const { contracts } = useSelector(st => st.contracts);
 
     useEffect(() => {
-        if (contracts.length > 0) {
+        if (contracts) {
             console.log(contracts)
             let contractsInfo = contracts.map(contract => {
                 let otherCompanyRole = contract.role === ROLES.seller ? ROLES.buyer : ROLES.seller;
@@ -36,8 +36,7 @@ export const Documents = () => {
             })
             setContractsInfo(contractsInfo);
         } else {
-            dispatch(getUserContracts()).then((res) => {
-                console.log(res)    
+            dispatch(getUserContracts()).then((res) => { 
                 if (res.error) {
                         dispatch(errAlert(res.payload));
                     }

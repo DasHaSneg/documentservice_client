@@ -3,7 +3,6 @@ import { SimpleTable } from "../../tables";
 
 export const ProductsTable = (props) => {
   const {strPrefix, prod} = props;
-  console.log(prod)
 
   const prefix = `${strPrefix}.products`
 
@@ -24,14 +23,16 @@ export const ProductsTable = (props) => {
 
   const getProducts = () => {
     return spec.products.map(product => {
+      let total1 = product.amount * product.price;
+      let vat = total1 * spec.VAT;
       return {
         number: product.number,
         name: product.name,
         amount: product.amount,
         price: product.price,
-        total1: product.amount * product.price,
-        vat: product.total1 * spec.VAT,
-        total2: product.total1 + product.vat
+        total1: total1,
+        vat: vat,
+        total2: total1 + vat
       };
     })
   }

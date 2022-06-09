@@ -4,7 +4,6 @@ import { strings } from "../../../../i18n";
 
 export const SignButton = (props) => {
     const {strPrefix, handleSign, disabled} = props;
-    console.log(disabled)
 
     return (
         <BaseButton

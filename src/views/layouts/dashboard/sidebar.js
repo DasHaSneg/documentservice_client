@@ -141,11 +141,11 @@ const Content = () => {
                         key={'exit'}
                         icon={<ExitToAppIcon fontSize="small" />}
                         title={strings('buttons.exit')}
-                        href={'/profile'}
+                        href={'/login'}
                         onClick={() => {
                             localStorage.removeItem('user');
                             localStorage.removeItem('token');
-                            dispatch(setUser(null));
+                            dispatch(setUser(null))
                         }}
                     />
             </Box>

@@ -66,7 +66,6 @@ import { Details } from "../../details/details";
 
 export const AttachmentDetails = (props) => {
     const {strPrefix, attachment} = props;
-    console.log(attachment)
     
     return(
         <Details
