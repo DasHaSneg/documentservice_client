@@ -145,6 +145,7 @@
         "createButton": "Create contract"
     },
     "document": {
+        "title": "Contract",
         "details_titles": {
             "main_details": "Main Details",
             "seller": "Seller",
@@ -192,6 +193,10 @@
         "createButton": "Create Attachment"
     },
     "attachment": {
+        "title": {
+            "attachment": "Attachment",
+            "contract": "to contract"
+        },
         "details_titles": {
             "main_details": "Main Details",
             "seller": "Seller",
@@ -264,9 +269,10 @@
         "upload": "Upload"
     },
     "statuses": {
-        "pending_application_creation": "Pending application creation", 
-        "waiting_for_attachment_signature": "Waiting for attachment signature",
-        "waiting_for_signature_2_of_2": "Waiting for signature 2 of 2",
+        "pending_annex_creation": "Pending application creation", 
+        "waiting_for_annex_signature": "Waiting for attachment signature",
+        "waiting_for_annex_signature_1_of_2": "Waiting for attachment signature 1 of 2",
+        "waiting_for_annex__signature_2_of_2": "Waiting for attachment signature 2 of 2",
         "waiting_for_signature_1_of_2": "Waiting for signature 1 of 2",
         "signed": "Signed",
         "completed": "Completed"
@@ -275,6 +281,10 @@
         "rows_per_page": "Rows per page"
     },
     "buttons": {
-        "back": "Back"
+        "back": "Back",
+        "testData": "Use test data"
+    },
+    "alerts": {
+        "success": "Success"
     }
 }

@@ -6,10 +6,12 @@ export const getAnnex = async (contract_id, id) => await axiosGet(`contract/${co
 
 export const addAnnex = async ({
     contract_id,
-    products
+    products,
+    buyer_public_address
 }) => {
     const data = {
-        products
+        products,
+        buyer_public_address
     }
 
     return await axiosPost(`contract/${contract_id}/annex`, data);

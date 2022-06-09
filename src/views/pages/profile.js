@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 
-
 export const Profile = (props) => {
     
     const { profile } = useSelector(st => st.user)
@@ -25,20 +24,6 @@ export const Profile = (props) => {
     useEffect(() => {
         setValues(profile);
     }, [profile])
-    // {
-    //     inn: "12122132",
-    //     name: "Buyer",
-    //     address: "sdsfsfsfdsfdsfgsdf",
-    //     mail_address: "sfdsdffsdf",
-    //     cpp: "12321324", 
-    //     bank: "Sberbank",
-    //     settlement_account: "sefsfs", 
-    //     correspondent_account: "sdfsfs", 
-    //     bic: "sdfsfsf"
-    // }
-    // const Documents = useApi(() =>
-    //   getTeamDocuments(team.id),
-    //   { immediately: true })
 
     const strPrefix = "profile";
 
@@ -81,7 +66,7 @@ export const Profile = (props) => {
                                     container
                                     spacing={3}
                                 >
-                                    {Object.keys(values).map(key => {
+                                    {values && Object.keys(values).map(key => {
                                         if (key == 'id') {
                                             return
                                         }

@@ -9,6 +9,19 @@ const headers = {
 	'Content-Type': 'application/json',
 }
 
+const instanceBl = axios.create({
+    baseURL: '/cosmonaut',
+    headers,
+    transformResponse: [
+		(data, headers) => {
+			const parsedData = JSON.parse(data)
+			if (parsedData.result) return parsedData.result
+			return parsedData
+		},
+	],
+	data: null,
+});
+
 const instance = axios.create({
     baseURL: '/api',
     headers,
@@ -21,6 +34,11 @@ const instance = axios.create({
 	],
 	data: null,
 });
+
+export const axiosGetBl = (url, ...params) => {
+    return instanceBl.get(url, ...params).then(res  => res.data)
+};
+
 
 export const axiosGet = (url, ...params) => {
     return instance.get(url, ...params).then(res  => res.data)

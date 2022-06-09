@@ -1,24 +1,37 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {getProfileById, sendUserAuth} from "../../requests";
 
-export const getUserProfile = createAsyncThunk('user/profile', async user => {
+export const getUserProfile = createAsyncThunk('user/profile', async (user, {rejectWithValue}) => {
     const {profile_id} = user;
     if (profile_id) {
-        const [profile] = await getProfileById(profile_id);
-        return profile;
+        try {
+            const [profile] = await getProfileById(profile_id);
+            return profile;
+        } catch (e) {
+            return rejectWithValue(e.response?.data?.error);
+        } 
     }
 });
 
-export const authUser = createAsyncThunk('user/auth', async val => {
-    const { user } = await sendUserAuth(val);
-    return user;
-})
+export const authUser = createAsyncThunk('user/auth', async (val, {rejectWithValue}) => {
+    try {
+        let result = await sendUserAuth(val);
+        if (result.user) {
+            localStorage.setItem('token', result.token);
+            localStorage.setItem('user', JSON.stringify(result.user));
+            return result.user;
+        }
+    } catch (e) {
+        return rejectWithValue(e.response?.data?.error);
+    }
+});
 
 export const userSlice = createSlice({
     name: 'user',
     initialState: {
         user: JSON.parse(localStorage.getItem('user') || null),
-        profile: null
+        profile: null,
+        error: null,
     },
     reducers: {
         setUser(state, action) {
@@ -40,6 +53,9 @@ export const userSlice = createSlice({
         },
         [authUser.fulfilled]: (state, action) => {
             state.user = action.payload;
+        },
+        [authUser.rejected]: (state, action) => {
+            state.error = action.payload;
         }
     }
 }); 

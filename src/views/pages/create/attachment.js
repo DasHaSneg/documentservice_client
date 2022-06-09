@@ -1,4 +1,5 @@
 import { Box, Container, Typography, Grid } from "@mui/material"
+import { useParams } from "react-router-dom";
 import { strings } from "../../../i18n";
 import { BackButton} from "../../components/buttons";
 import { CreateAttachmentForm } from "../../components/create/attachment";
@@ -6,6 +7,7 @@ import { DashboardLayout } from "../../layouts/dashboard";
 
 export const CreateAttachment = () => {
     const strPrefix = "create_attachment";
+    const {id:docId} = useParams();
 
     return(
         <DashboardLayout>
@@ -34,7 +36,7 @@ export const CreateAttachment = () => {
                             md={12}
                             xs={12}
                         >
-                            <CreateAttachmentForm strPrefix={strPrefix} />
+                            <CreateAttachmentForm strPrefix={strPrefix} docId={docId}/>
                         </Grid>
                         <Grid
                             item

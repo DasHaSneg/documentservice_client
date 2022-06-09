@@ -3,7 +3,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { strings } from "../../../../i18n";
 
 export const CreateButton = (props) => {
-    const {strPrefix, handleCreate} = props;
+    const {strPrefix, handleCreate, disabled} = props;
 
     return (
         <BaseButton
@@ -13,6 +13,7 @@ export const CreateButton = (props) => {
                 color: 'success.main',
                 image: <AddIcon /> 
             }}
+            disabled={disabled}
         />
     )
 }

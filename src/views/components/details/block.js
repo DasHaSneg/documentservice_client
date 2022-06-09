@@ -23,7 +23,8 @@ export const BlockDetails = (props) => {
                     case "date":
                         return <DetailsField
                                     title={`${strings(`${strPrefixDetails}.${title}.${field}`)}:`}
-                                    value={format(fields[field], 'dd/MM/yyyy')}
+                                    // value={format(fields[field], 'dd/MM/yyyy')}
+                                    value={fields[field]}
                         />
                     case "status":
                         return  <DetailsField

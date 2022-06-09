@@ -12,7 +12,8 @@ import {
   TableSortLabel,
   Tooltip,
   TablePagination,
-  TableContainer
+  TableContainer,
+  Button
 } from '@mui/material';
 import { SeverityPill } from '../severity-pill';
 import { strings } from '../../../i18n';
@@ -20,7 +21,7 @@ import { useState } from 'react';
 
 
 export const SimpleTable = (props) => {
-    const {strPrefix, columns, items} = props;
+    const {strPrefix, columns, items, handleItemClick} = props;
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(0);
 
@@ -64,33 +65,36 @@ export const SimpleTable = (props) => {
                 </TableHead>
                 <TableBody>
                   {items.map((item, index) => (
-                    <TableRow
-                      hover
-                      key={index}
-                    >
-                        {Object.keys(item).map((field, index) => {
-                            switch(field) {
-                                case "date":
-                                    return <TableCell key={index}>
-                                    {format(item[field], 'dd/MM/yyyy')}
-                                  </TableCell>
-                                case "status":
-                                    return <TableCell key={index}>
-                                    <SeverityPill
-                                      color={(item[field] === 'Подписан' && 'success')
-                                      || (item[field] === 'refunded' && 'error')
-                                      || 'warning'}
-                                    >
+                      <TableRow
+                        hover
+                        key={index}
+                        onClick={() => handleItemClick(item)}
+                      >
+                        
+                          {Object.keys(item).map((field, index) => {
+                              switch(field) {
+                                  case "date":
+                                      return <TableCell key={index}>
+                                      {/* {format(item[field], 'dd/MM/yyyy')} */}
                                       {item[field]}
-                                    </SeverityPill>
-                                  </TableCell>
-                                default: 
-                                    return <TableCell key={index}>
-                                    {item[field]}
-                                  </TableCell>
-                            }
-                        })}
-                    </TableRow>
+                                    </TableCell>
+                                  case "status":
+                                      return <TableCell key={index}>
+                                      <SeverityPill
+                                        color={(item[field] === 'Подписан' && 'success')
+                                        || (item[field] === 'refunded' && 'error')
+                                        || 'warning'}
+                                      >
+                                        {item[field]}
+                                      </SeverityPill>
+                                    </TableCell>
+                                  default: 
+                                      return <TableCell key={index}>
+                                      {item[field]}
+                                    </TableCell>
+                              }
+                          })}
+                      </TableRow>
                   ))}
                 </TableBody>
               </Table>

@@ -7,7 +7,7 @@ import alertReducer from './reducers/alert';
 export default configureStore({
     reducer: {
         user: userReducer, 
-        contract: contractReducer,
+        contracts: contractReducer,
         alert: alertReducer
     },
     middleware: [thunk]

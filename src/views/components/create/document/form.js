@@ -2,10 +2,13 @@ import { Card, CardContent, Grid, Box, TextField, Button, Autocomplete, Circular
 import { strings } from "../../../../i18n";
 import { useEffect, useState } from "react";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addContract, getProfileById, getProfileByINN } from "../../../../requests";
 import { useApi } from "../../../../hooks/useApi";
 import LoadingButton from '@mui/lab/LoadingButton';
+import { errAlert } from "../../../../redux/reducers/alert";
+import { setContract } from "../../../../redux/reducers/contract";
+import { useNavigate } from "react-router-dom";
 
 
 const companies = [
@@ -34,6 +37,8 @@ const companies = [
 ]
 
 export const CreateDocumentForm = (props) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {strPrefix} = props;
     const {user} = useSelector(state => state.user);
 
@@ -60,9 +65,13 @@ export const CreateDocumentForm = (props) => {
     });
 
     const profile = useApi(async (id) => {
-        const profile = await getProfileById(id);
-        if (profile) {
-            return profile;
+        try {
+            const profile = await getProfileById(id);
+            if (profile) {
+                return profile;
+            }
+        } catch (err) {
+            dispatch(errAlert(err.response?.data?.error));
         }
     });
 
@@ -110,20 +119,19 @@ export const CreateDocumentForm = (props) => {
     }, [inputValue]);
 
     const sign = useApi(async (userProfile) => {
-        console.log({
-            sellerProfile: userProfile,
-            buyerProfile: value 
-        })
-
-        const result = await addContract({
-            sellerProfile: userProfile,
-            buyerProfile: value 
-        });
-
-        if (result) {
-            console.log(result);
-        }
-            
+        try {
+            const result = await addContract({
+                sellerProfile: userProfile,
+                buyerProfile: value 
+            });
+    
+            if (result) {
+                dispatch(setContract(result));
+                navigate(`/document/${result.id}`);
+            }
+        } catch (err) {
+            dispatch(errAlert(err.response?.data?.error));
+        }  
     });
 
     const handleSignClick = async () => {

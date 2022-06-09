@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { strings } from '../../../i18n';
 import { SimpleTable } from '../tables';
 
@@ -12,20 +13,18 @@ import { SimpleTable } from '../tables';
 // ];
 
 
-
-
+// const documents = [
+//   {
+//     number: "1",
+//     inn: "546391943410",
+//     name: 'Компания2',
+//     date: 1651743800000,
+//     status: strings(`statuses.waiting_for_signature_1_of_2`)
+//   }
+// ];
 export const DocumentsTable = (props) => {
-  const documents = [
-    {
-      number: "1",
-      inn: "546391943410",
-      name: 'Компания2',
-      date: 1651743800000,
-      status: strings(`statuses.waiting_for_signature_1_of_2`)
-    }
-  ];
-
-  const {strPrefix} = props;
+  const {strPrefix, documents} = props;
+  const navigate = useNavigate();
 
   const columns = {
     number: strings(`${strPrefix}.columns.number`),
@@ -40,6 +39,7 @@ export const DocumentsTable = (props) => {
       strPrefix={strPrefix}
       columns={columns}
       items={documents}
+      handleItemClick={(item) => navigate(`/document/${item.number}`)}
     />
   )
 };

@@ -32,7 +32,7 @@ export const Register = () => {
     const submitRegister = useApi(
         (...rest) => {
             registerUser(...rest).then(() => {
-                dispatch(successAlert('success'));
+                dispatch(successAlert(strings('alerts.success')));
                 navigate("/documents");
             })
             .catch(e => {

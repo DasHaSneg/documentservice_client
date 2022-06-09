@@ -1,11 +1,7 @@
 import { axiosPost } from "../helpers/api"
 
-export const sendUserAuth = val => {
-    axiosPost('/auth/login', val).then(result => {
-        localStorage.setItem('token', result.token);
-        localStorage.setItem('user', JSON.stringify(result.user));
-        return result;
-    }); 
+export const sendUserAuth = async val => {
+    return await axiosPost('/auth/login', val);
 }
 
 //const profileRequiredFields = ['inn', 'name', 'address', 'mail_address', 'cpp', 'bank', 'settlement_account', 'correspondent_account', 'bic']

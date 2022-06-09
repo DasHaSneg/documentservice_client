@@ -1,12 +1,12 @@
-import { axiosGet} from "../helpers/api";
+import { axiosGet, axiosGetBl} from "../helpers/api";
 
-const blockchainModulePrefix = "cosmonaut/documentservice/documentservice/"
+const blockchainModulePrefix = "documentservice/documentservice/"
 
-export const getBlockchainAnnexes = async() => await axiosGet(`annex`);
+export const getBlockchainAnnexes = async() => await axiosGetBl(`${blockchainModulePrefix}annex`);
 
-export const getBlockchainAnnex = async(blannex_id) => await axiosGet(`annex/${blannex_id}`);
+export const getBlockchainAnnex = async(blannex_id) => await axiosGetBl(`${blockchainModulePrefix}annex/${blannex_id}`);
 
-export const getBlockchainContracts = async() => await axiosGet(`contract`);
+export const getBlockchainContracts = async() => await axiosGetBl(`${blockchainModulePrefix}contract`);
 
 export const getBlockchainContract = async(blcontract_id) => await axiosGet(`contract/${blcontract_id}`);
 

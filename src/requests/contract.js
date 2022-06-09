@@ -1,6 +1,6 @@
 import { axiosGet, axiosPost } from "../helpers/api";
 
-export const getContracts = async() => await axiosGet(`contract/`);
+export const getContracts = async() => await axiosGet(`contract`);
 
 export const getContract = async (id) => await axiosGet(`contract/${id}`);
 

@@ -145,6 +145,7 @@
         "createButton": "Создать договор"
     },
     "document": {
+        "title": "Договор",
         "details_titles": {
             "main_details": "Основное",
             "seller": "Продавец",
@@ -192,6 +193,10 @@
         "createButton": "Создать приложение"
     },
     "attachment": {
+        "title": {
+            "attachment": "Приложение",
+            "contract": "к договору"
+        },
         "details_titles": {
             "main_details": "Основное",
             "seller": "Продавец",
@@ -264,10 +269,12 @@
         "upload": "Загрузить CSV файл"
     },
     "statuses": {
-        "pending_application_creation": "Ожидает создание приложения", 
-        "waiting_for_attachment_signature": "Ожидает подписи приложения",
-        "waiting_for_signature_2_of_2": "Ждет подписи 2 из 2",
-        "waiting_for_signature_1_of_2": "Ждет подписи 1 из 2",
+        "pending_annex_creation": "Ожидает создания приложения", 
+        "waiting_for_annex_signature": "Ожидает подписания приложения",
+        "waiting_for_annex_signature_1_of_2": "Ожидает подписи приложения 1 из 2",
+        "waiting_for_annex__signature_2_of_2": "Ожидает подписи приложения 2 из 2",
+        "waiting_for_signature_2_of_2": "Ожидает подписи 2 из 2",
+        "waiting_for_signature_1_of_2": "Ожидает подписи 1 из 2",
         "signed": "Подписан",
         "completed": "Завершен"
     },
@@ -275,6 +282,10 @@
         "rows_per_page": "Строки на странице"
     },
     "buttons": {
-        "back": "Назад"
+        "back": "Назад",
+        "testData": "Использовать тестовые данные"
+    },
+    "alerts": {
+        "success": "Успешно"
     }
 }

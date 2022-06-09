@@ -1,14 +1,15 @@
 import { Card, CardActionArea, CardContent, Grid, Typography, Avatar } from "@mui/material";
 
 export const BaseButton = (props) => {
-    const {handleAction, text, icon} = props;
+    const {handleAction, text, icon, disabled} = props;
+    console.log(disabled)
 
     return(
         <Card
             sx={{ height: '100%' }}
             {...props}
         >
-            <CardActionArea onClick={handleAction}>
+            <CardActionArea onClick={handleAction} disabled={disabled}>
                 <CardContent>
                     <Grid
                         container

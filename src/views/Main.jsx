@@ -24,17 +24,17 @@ export const Main = (props) => {
       <SimpleAlert />
       <BrowserRouter>
         <Routes>
-          <Route exact path='/create/attachment' element={<PrivateRoute/>}>
-            <Route path="/create/attachment" element={<CreateAttachment />} />
+          <Route exact path='/create/attachment/:id' element={<PrivateRoute/>}>
+            <Route path="/create/attachment/:id" element={<CreateAttachment />} />
           </Route>
           <Route exact path='/create/document' element={<PrivateRoute/>}>
             <Route path="/create/document" element={<CreateDocument />} />
           </Route>
-          <Route exact path='/attachment' element={<PrivateRoute/>}>
-            <Route path="/attachment" element={<Attachment />} />
+          <Route exact path='/attachment/:contract_id/:id' element={<PrivateRoute/>}>
+            <Route path="/attachment/:contract_id/:id" element={<Attachment />} />
           </Route>
-          <Route exact path='/document' element={<PrivateRoute/>}>
-            <Route path="/document" element={<Document />} />
+          <Route exact path='/document/:id' element={<PrivateRoute/>}>
+            <Route path="/document/:id" element={<Document />} />
           </Route>
           <Route exact path='/profile' element={<PrivateRoute/>}>
             <Route path="/profile" element={<Profile />} />

@@ -3,7 +3,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { strings } from "../../../../i18n";
 
 export const FinishButton = (props) => {
-    const {strPrefix, handleFinish} = props;
+    const {strPrefix, handleFinish, disabled} = props;
 
     return (
         <BaseButton
@@ -13,6 +13,7 @@ export const FinishButton = (props) => {
                 color: 'error.main',
                 image: <CheckIcon /> 
             }}
+            disabled={disabled}
         />
     )
 }

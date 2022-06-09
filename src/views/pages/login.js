@@ -3,9 +3,11 @@ import { useFormik } from "formik";
 import { strings } from '../../i18n';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useApi } from "../../hooks/useApi";
 import { authUser } from "../../redux/reducers/user";
+import { errAlert, successAlert } from "../../redux/reducers/alert";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 
 export const Login = (props) => {
@@ -13,12 +15,21 @@ export const Login = (props) => {
     const dispatch = useDispatch();
 
     const strPrefix="login";
-
-    const authLogin = useApi(authValues => dispatch(authUser(authValues)))
+    
+    const authLogin = useApi(authValues => { 
+        dispatch(authUser(authValues)).then((res) => {
+            if (res.error) {
+                dispatch(errAlert(res.payload));
+            } else {
+                dispatch(successAlert(strings('alerts.success')));
+                navigate('/');
+            }
+        });
+    });
     
     const formik = useFormik({
         initialValues: {
-            email: 'test1@mail.ru',
+            email: 'company1@mail.ru',
             password: '1234',
         },
         validationSchema: Yup.object({
@@ -36,10 +47,7 @@ export const Login = (props) => {
                 strings(`${strPrefix}.fields.password.required`))
         }),
         onSubmit: async (values) => {
-            //authLogin.fetch(formix.values);
             await authLogin.fetch(values);
-            console.log('submit')
-            navigate('/')
         }
     });
 
@@ -90,16 +98,16 @@ export const Login = (props) => {
                         variant="outlined"
                     />
                     <Box sx={{ py: 2 }}>
-                        <Button
+                        <LoadingButton
                             color="primary"
-                            disabled={formik.isSubmitting}
                             fullWidth
                             size="large"
                             type="submit"
                             variant="contained"
+                            loading={formik.isSubmitting}
                         >
                             {strings(`${strPrefix}.submitButton`)}
-                        </Button>
+                        </LoadingButton>
                     </Box>
                     <Typography
                         color="textSecondary"

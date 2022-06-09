@@ -3,7 +3,8 @@ import CallMadeIcon from '@mui/icons-material/CallMade';
 import { strings } from "../../../../i18n";
 
 export const SignButton = (props) => {
-    const {strPrefix, handleSign} = props;
+    const {strPrefix, handleSign, disabled} = props;
+    console.log(disabled)
 
     return (
         <BaseButton
@@ -13,6 +14,7 @@ export const SignButton = (props) => {
                 color: 'warning.main',
                 image: <CallMadeIcon /> 
             }}
+            disabled={disabled}
         />
     )
 }

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { strings } from "../../../../i18n";
 import { SimpleTable } from "../../tables";
 
@@ -9,16 +10,18 @@ import { SimpleTable } from "../../tables";
 //     }
 // ];
 
-const attachments = [
-  {
-    number: "1",
-    date: 1651743800000,
-    status: strings(`statuses.signed`)
-  }
-];
+// const attachments = [
+//   {
+//     number: "1",
+//     date: 1651743800000,
+//     status: strings(`statuses.signed`)
+//   }
+// ];
 
 export const AttachmentsTable = (props) => {
-  const {strPrefix} = props;
+  const {strPrefix, attachments, handleItemClick} = props;
+  const navigate = useNavigate();
+  console.log(attachments)
 
   const prefix = `${strPrefix}.attachments`
 
@@ -33,6 +36,7 @@ export const AttachmentsTable = (props) => {
       strPrefix={prefix}
       columns={columns}
       items={attachments}
+      handleItemClick={handleItemClick}
     />
   )
 }
