@@ -17,6 +17,7 @@ export const getUserContract = createAsyncThunk('contracts/new', async (id, {rej
 export const getUserContracts = createAsyncThunk('contracts/all', async (val, {rejectWithValue}) => {
     try {
         let contracts = await getContracts();
+        if (contracts.length === 0) return [];
         let blContractsInfo = await getBlockchainContracts();
         let blContracts = blContractsInfo['Contract'];
         let contractsWithMainInfo = contracts.map(contract => {

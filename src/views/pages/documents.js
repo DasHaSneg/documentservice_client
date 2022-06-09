@@ -90,7 +90,7 @@ export const Documents = () => {
                             xl={9}
                             xs={12}
                         >
-                            {contractsInfo && <DocumentsTable strPrefix={strPrefix} documents={contractsInfo}/>}
+                            {contractsInfo && contractsInfo.length > 0 && <DocumentsTable strPrefix={strPrefix} documents={contractsInfo}/>}
                         </Grid>
                     </Grid>
                 </Container>

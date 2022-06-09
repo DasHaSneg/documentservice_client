@@ -282,7 +282,8 @@
     },
     "buttons": {
         "back": "Back",
-        "testData": "Use test data"
+        "testData": "Use test data",
+        "exit": "Exit"
     },
     "alerts": {
         "success": "Success"

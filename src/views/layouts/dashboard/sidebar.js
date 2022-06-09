@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
-import { Drawer, Box, Divider, useMediaQuery, Typography, useTheme } from "@mui/material";
+import { Drawer, Box, Divider, useMediaQuery, Typography, useTheme, Button } from "@mui/material";
 import { NavItem } from "./nav-item";
 import { useNavigate } from "react-router-dom";
 import { strings } from '../../../i18n';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../../redux/reducers/user';
 
 const strPrefix = "sidebar";
 
@@ -17,6 +20,7 @@ const items = [
         icon: null,
         title: strings(`${strPrefix}.items.documents`)
     }
+
     // {
     // href: '/main',
     // icon: null,
@@ -74,6 +78,7 @@ export const DashboardSidebar = (props) => {
 };
 
 const Content = () => {
+    const dispatch=useDispatch();
     return (
         <>
             <Box
@@ -132,6 +137,17 @@ const Content = () => {
                         title={item.title}
                     />
                 })}
+                <NavItem 
+                        key={'exit'}
+                        icon={<ExitToAppIcon fontSize="small" />}
+                        title={strings('buttons.exit')}
+                        href={'/profile'}
+                        onClick={() => {
+                            localStorage.removeItem('user');
+                            localStorage.removeItem('token');
+                            dispatch(setUser(null));
+                        }}
+                    />
             </Box>
         </>
     )
